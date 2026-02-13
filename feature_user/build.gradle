@@ -1,19 +1,23 @@
-plugins {
-    alias(libs.plugins.android.application)
+if (rootProject.ext.isModule) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
 }
 
 android {
     namespace 'com.hja.feature_user'
     compileSdk {
-        version = release(36)
+        version = release(rootProject.ext.compileSdkVersion)
     }
 
     defaultConfig {
-        applicationId "com.hja.feature_user"
-        minSdk 26
-        targetSdk 36
-        versionCode 1
-        versionName "1.0"
+        if (rootProject.ext.isModule) {
+            applicationId "com.hja.feature_user"
+        }
+        minSdk rootProject.ext.minSdkVersion
+        targetSdk rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
