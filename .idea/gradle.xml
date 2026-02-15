@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/feature_home" />
             <option value="$PROJECT_DIR$/feature_plaza" />
             <option value="$PROJECT_DIR$/feature_user" />
+            <option value="$PROJECT_DIR$/library_base" />
           </set>
         </option>
       </GradleProjectSettings>

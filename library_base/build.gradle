@@ -1,25 +1,18 @@
-if (rootProject.ext.isModule) {
-    apply plugin: 'com.android.application'
-} else {
-    apply plugin: 'com.android.library'
+plugins {
+    alias(libs.plugins.android.library)
 }
 
 android {
-    namespace 'com.hja.feature_user'
+    namespace 'com.hja.libbase'
     compileSdk {
         version = release(rootProject.ext.compileSdkVersion)
     }
 
     defaultConfig {
-        if (rootProject.ext.isModule) {
-            applicationId "com.hja.feature_user"
-        }
         minSdk rootProject.ext.minSdkVersion
-        targetSdk rootProject.ext.targetSdkVersion
-        versionCode rootProject.ext.versionCode
-        versionName rootProject.ext.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -35,11 +28,12 @@ android {
 }
 
 dependencies {
-    implementation libs.appcompat
-    implementation libs.material
+    api libs.appcompat
+    api libs.material
+    api libs.activity
+    api libs.constraintlayout
+
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
-
-    implementation project(":library_base")
 }
