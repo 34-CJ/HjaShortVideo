@@ -32,7 +32,9 @@ dependencies {
     api libs.material
     api libs.activity
     api libs.constraintlayout
+    api libs.arouter
 
+    annotationProcessor libs.arouterCompiler
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
