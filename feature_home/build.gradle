@@ -1,37 +1,15 @@
-if (rootProject.ext.isModule) {
-    apply plugin: 'com.android.application'
-} else {
-    apply plugin: 'com.android.library'
-}
+apply from:"../featureConfig.build.gradle"
 
 android {
+
     namespace 'com.hja.feature_home'
-    compileSdk {
-        version = release(rootProject.ext.compileSdkVersion)
-    }
 
     defaultConfig {
         if (rootProject.ext.isModule){
             applicationId "com.hja.feature_home"
         }
-        minSdk rootProject.ext.minSdkVersion
-        targetSdk rootProject.ext.targetSdkVersion
-        versionCode rootProject.ext.versionCode
-        versionName rootProject.ext.versionName
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
-    }
 }
 
 dependencies {
