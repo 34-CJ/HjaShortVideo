@@ -8,6 +8,7 @@ material = "1.13.0"
 activity = "1.12.2"
 constraintlayout = "2.2.1"
 arouter = "1.5.2"
+lifecycle = "2.6.1"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -17,6 +18,9 @@ appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "a
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+liveData = { group = "androidx.lifecycle", name = "lifecycle-livedata", version.ref = "lifecycle" }
+viewModel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "lifecycle" }
+
 arouter = {group = "com.alibaba", name = "arouter-api", version.ref = "arouter"}
 arouterCompiler = { group = "com.alibaba", name = "arouter-compiler", version.ref = "arouter"}
 

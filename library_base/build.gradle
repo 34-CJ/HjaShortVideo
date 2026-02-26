@@ -33,6 +33,8 @@ dependencies {
     api libs.activity
     api libs.constraintlayout
     api libs.arouter
+    api libs.liveData
+    api libs.viewModel
 
     annotationProcessor libs.arouterCompiler
     testImplementation libs.junit
