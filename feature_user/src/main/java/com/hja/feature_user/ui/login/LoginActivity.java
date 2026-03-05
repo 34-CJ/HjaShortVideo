@@ -7,22 +7,42 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.hja.feature_user.BR;
 
 import com.hja.feature_user.R;
+import com.hja.feature_user.databinding.ActivityLoginBinding;
+import com.hja.libbase.base.BaseActivity;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewModel> {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-
-
-        setContentView(R.layout.activity_login);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+    protected void initView() {
+        //在这里做一些布局、ui的初始化
+//        mDataBinding.main.setVisibility(View.INVISIBLE);
     }
+
+    @Override
+    protected void initData() {
+        //在这里做一些数据上的初始化
+        mViewModel.changeData();
+    }
+
+    @Override
+    protected LoginViewModel getViewModel() {
+        return new ViewModelProvider(this).get(LoginViewModel.class);
+    }
+
+    @Override
+    protected int getLayoutResId() {
+        return R.layout.activity_login;
+    }
+
+    @Override
+    protected int getBindingVariableId() {
+        return BR.viewModel;
+    }
+
+
 }

@@ -8,6 +8,11 @@ android {
         if (rootProject.ext.isModule) {
             applicationId "com.hja.feature_user"
         }
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
 }

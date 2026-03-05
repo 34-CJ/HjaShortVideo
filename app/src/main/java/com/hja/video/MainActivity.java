@@ -1,26 +1,32 @@
 package com.hja.video;
 
-import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
+import androidx.lifecycle.ViewModelProvider;
 import com.hja.libbase.base.BaseActivity;
+// 这两行是自动生成的，环境修好后它们会自动变黑
+import com.hja.video.databinding.ActivityMainBinding;
+import com.hja.video.BR;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewModel> {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+    protected MainViewModel getViewModel() {
+        return new ViewModelProvider(this).get(MainViewModel.class);
     }
+
+    @Override
+    protected int getLayoutResId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected int getBindingVariableId() {
+        // 这里的 BR 如果还报错，说明编译还没彻底完成
+        return BR.viewModel;
+    }
+
+    @Override
+    protected void initView() {}
+
+    @Override
+    protected void initData() {}
 }
