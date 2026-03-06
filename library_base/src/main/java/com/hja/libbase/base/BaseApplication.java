@@ -5,6 +5,8 @@ import android.app.Application;
 import com.alibaba.android.arouter.BuildConfig;
 import com.alibaba.android.arouter.launcher.ARouter;
 
+import me.jessyan.autosize.AutoSizeConfig;
+
 /**
  * 当前工程中的Application基类
  */
@@ -22,5 +24,7 @@ public class BaseApplication extends Application {
 
         //初始化ARouter
         ARouter.init(this);
+        //AndroidAutoSize的参数初始化
+        AutoSizeConfig.getInstance().setCustomFragment(true);
     }
 }

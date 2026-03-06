@@ -9,6 +9,7 @@ activity = "1.12.2"
 constraintlayout = "2.2.1"
 arouter = "1.5.2"
 lifecycle = "2.6.1"
+androidAutoSize = "v1.2.1"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -23,6 +24,7 @@ viewModel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel", versio
 
 arouter = {group = "com.alibaba", name = "arouter-api", version.ref = "arouter"}
 arouterCompiler = { group = "com.alibaba", name = "arouter-compiler", version.ref = "arouter"}
+androidAutoSize = { group = "com.github.JessYanCoding", name = "AndroidAutoSize", version.ref = "androidAutoSize" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

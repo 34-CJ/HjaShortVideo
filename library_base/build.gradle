@@ -45,6 +45,7 @@ dependencies {
     api libs.arouter
     api libs.liveData
     api libs.viewModel
+    api libs.androidAutoSize
 
     annotationProcessor libs.arouterCompiler
     testImplementation libs.junit
