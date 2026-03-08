@@ -15,14 +15,53 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World!"
+        <RadioGroup
+            android:id="@+id/rb_bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent">
+
+            <RadioButton
+                android:id="@+id/rb_home"
+                style="@style/mainBottomRadioButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:checked="true"
+
+                android:drawableTop="@drawable/radio_btton_index"
+                android:text="首页" />
+
+            <RadioButton
+                android:id="@+id/rb_plaza"
+                style="@style/mainBottomRadioButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/radio_btton_plaza"
+                android:text="广场" />
+
+            <RadioButton
+                android:id="@+id/rb_find"
+                style="@style/mainBottomRadioButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/radio_btton_find"
+                android:text="发现" />
+
+            <RadioButton
+                android:id="@+id/rb_mine"
+                style="@style/mainBottomRadioButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/radio_btton_mine"
+                android:text="我的" />
+
+        </RadioGroup>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
