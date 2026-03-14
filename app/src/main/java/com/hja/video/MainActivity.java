@@ -1,6 +1,11 @@
 package com.hja.video;
 
+import android.widget.RadioGroup;
+
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.hja.libbase.base.BaseActivity;
 // 这两行是自动生成的，环境修好后它们会自动变黑
 import com.hja.video.databinding.ActivityMainBinding;
@@ -18,14 +23,43 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         return R.layout.activity_main;
     }
 
-    @Override
+    @Override 
     protected int getBindingVariableId() {
         // 这里的 BR 如果还报错，说明编译还没彻底完成
         return BR.viewModel;
     }
 
     @Override
-    protected void initView() {}
+    protected void initView() {
+
+        Fragment homeFragment = (Fragment) ARouter.getInstance().build("/home/homeFragment").navigation();
+        Fragment plazaFragment = (Fragment) ARouter.getInstance().build("/plaza/plazaFragment").navigation();
+        Fragment findFragment = (Fragment) ARouter.getInstance().build("/find/findFragment").navigation();
+        Fragment userFragment = (Fragment) ARouter.getInstance().build("/user/userFragment").navigation();
+
+
+        replaceFragment(homeFragment);
+
+        mDataBinding.rbBottomNavigation.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.rb_home) {
+                    replaceFragment(homeFragment);
+                } else if (checkedId == R.id.rb_plaza) {
+                    replaceFragment(plazaFragment);
+                } else if (checkedId == R.id.rb_find) {
+                    replaceFragment(findFragment);
+                } else if (checkedId == R.id.rb_mine) {
+                    replaceFragment(userFragment);
+                }
+            }
+        });
+
+    }
+
+    private void replaceFragment(Fragment homeFragment) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.fcv, homeFragment).commit();
+    }
 
     @Override
     protected void initData() {}

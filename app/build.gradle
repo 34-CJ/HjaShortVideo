@@ -48,5 +48,16 @@ dependencies {
     androidTestImplementation libs.espresso.core
 
     annotationProcessor libs.arouterCompiler
-    implementation project(":library_base")
+    if (rootProject.ext.isModule){
+        implementation project(":library_base")
+    }else{
+        //被集成
+        implementation project(":library_base")
+        implementation project(":feature_home")
+        implementation project(":feature_plaza")
+        implementation project(":feature_find")
+        implementation project(":feature_user")
+    }
+
+
 }
