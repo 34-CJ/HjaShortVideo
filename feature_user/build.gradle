@@ -31,4 +31,5 @@ dependencies {
 
     annotationProcessor libs.arouterCompiler
     implementation project(":library_base")
+    annotationProcessor 'com.alibaba:arouter-compiler:1.5.2'
 }
