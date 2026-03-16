@@ -9,22 +9,40 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModel;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.hja.feature_plaza.databinding.LayoutFragmentPlazaBinding;
+import com.hja.libbase.base.BaseFragment;
+import com.hja.libbase.config.ARouterPath;
 
-@Route(path = "/plaza/plazaFragment")
-public class PlazaFragment extends Fragment {
+@Route(path = ARouterPath.Plaza.FRAGMENT_PLAZA)
+
+public class PlazaFragment extends BaseFragment {
+
+
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
+    protected ViewModel getViewModel() {
+        return null;
     }
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
-        LayoutFragmentPlazaBinding binding = DataBindingUtil.inflate(inflater,R.layout.layout_fragment_plaza,container,false);
-        View root = binding.getRoot();
-        return root;
+    protected int getLayoutResId() {
+        return R.layout.layout_fragment_plaza;
+    }
+
+    @Override
+    protected int getBindingVariableId() {
+        return 0;
+    }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initData() {
+
     }
 }

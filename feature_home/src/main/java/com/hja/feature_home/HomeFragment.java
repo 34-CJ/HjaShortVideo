@@ -10,22 +10,39 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModel;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.hja.feature_home.databinding.LayoutFragmentHomeBinding;
+import com.hja.libbase.base.BaseFragment;
+import com.hja.libbase.config.ARouterPath;
 
-@Route(path = "/home/homeFragment")
-public class HomeFragment extends Fragment {
+@Route(path = ARouterPath.Home.FRAGMENT_HOME)
+public class HomeFragment extends BaseFragment {
+
+
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
+    protected ViewModel getViewModel() {
+        return null;
     }
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
-        LayoutFragmentHomeBinding binding = DataBindingUtil.inflate(inflater,R.layout.layout_fragment_home,container,false);
-        View root = binding.getRoot();
-        return root;
+    protected int getLayoutResId() {
+        return R.layout.layout_fragment_home;
+    }
+
+    @Override
+    protected int getBindingVariableId() {
+        return 0;
+    }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initData() {
+
     }
 }

@@ -9,22 +9,39 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModel;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.hja.feature_user.databinding.LayoutFragmentUserBinding;
+import com.hja.libbase.base.BaseFragment;
+import com.hja.libbase.config.ARouterPath;
 
-@Route(path = "/user/userFragment")
-public class UserFragment extends Fragment {
+@Route(path = ARouterPath.User.FRAGMENT_USER)
+public class UserFragment extends BaseFragment {
+
+
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
+    protected ViewModel getViewModel() {
+        return null;
     }
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
-        LayoutFragmentUserBinding binding = DataBindingUtil.inflate(inflater,R.layout.layout_fragment_user,container,false);
-        View root = binding.getRoot();
-        return root;
+    protected int getLayoutResId() {
+        return R.layout.layout_fragment_user;
+    }
+
+    @Override
+    protected int getBindingVariableId() {
+        return 0;
+    }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initData() {
+
     }
 }

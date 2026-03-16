@@ -9,22 +9,39 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModel;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.hja.feature_find.databinding.LayoutFragmentFindBinding;
+import com.hja.libbase.base.BaseFragment;
+import com.hja.libbase.config.ARouterPath;
 
-@Route(path = "/find/findFragment")
-public class FindFragment extends Fragment {
+@Route(path = ARouterPath.Find.FRAGMENT_FIND)
+public class FindFragment extends BaseFragment {
+
+
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
+    protected ViewModel getViewModel() {
+        return null;
     }
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
-        LayoutFragmentFindBinding binding = DataBindingUtil.inflate(inflater,R.layout.layout_fragment_find,container,false);
-        View root = binding.getRoot();
-        return root;
+    protected int getLayoutResId() {
+        return R.layout.layout_fragment_find;
+    }
+
+    @Override
+    protected int getBindingVariableId() {
+        return 0;
+    }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initData() {
+
     }
 }
