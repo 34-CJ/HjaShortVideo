@@ -1,5 +1,6 @@
 package com.hja.video;
 
+import android.util.Log;
 import android.widget.RadioGroup;
 
 import androidx.fragment.app.Fragment;
@@ -38,7 +39,11 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         Fragment userFragment = (Fragment) ARouter.getInstance().build("/user/userFragment").navigation();
 
 
-        replaceFragment(homeFragment);
+        if (homeFragment != null) {
+            replaceFragment(homeFragment);
+        } else {
+            Log.e("ARouter", "家模块 Fragment 未找到，请检查路由配置和注解！");
+        }
 
         mDataBinding.rbBottomNavigation.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override

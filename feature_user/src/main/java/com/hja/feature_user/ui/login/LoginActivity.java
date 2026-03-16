@@ -9,12 +9,15 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.hja.feature_user.BR;
 
 import com.hja.feature_user.R;
 import com.hja.feature_user.databinding.ActivityLoginBinding;
 import com.hja.libbase.base.BaseActivity;
+import com.hja.libbase.config.ARouterPath;
 
+@Route(path = ARouterPath.User.ACTIVITY_LOGIN)
 public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewModel> {
 
     @Override
