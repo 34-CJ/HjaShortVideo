@@ -12,6 +12,8 @@ import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModel;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+
 public abstract class BaseFragment<V extends ViewDataBinding, VM extends ViewModel> extends Fragment {
 
     protected VM mViewModel;
@@ -38,6 +40,7 @@ public abstract class BaseFragment<V extends ViewDataBinding, VM extends ViewMod
             mDataBinding.executePendingBindings();
         }
 
+        ARouter.getInstance().inject(this);
         initView();
         initData();
 

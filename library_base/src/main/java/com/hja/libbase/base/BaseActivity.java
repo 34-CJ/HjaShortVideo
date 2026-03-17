@@ -13,6 +13,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.ViewModel;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+
 public abstract class BaseActivity<V extends ViewDataBinding, VM extends ViewModel> extends AppCompatActivity {
 
     protected VM mViewModel;
@@ -33,7 +35,7 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends ViewMod
             return insets;
         });
 
-
+        ARouter.getInstance().inject(this);
 
         initView();
         initData();
