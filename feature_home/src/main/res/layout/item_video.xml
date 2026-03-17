@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="video"
+            type="com.hja.feature_home.adapter.ResVideo" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="11dp">
+
+
+        <ImageView
+            android:id="@+id/iv_background"
+            android:layout_width="match_parent"
+            android:layout_height="216dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/bg_video_test"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="16dp"
+            android:src="@mipmap/icon_mute"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:layout_width="19.5dp"
+            android:layout_height="19.5dp"
+            android:src="@mipmap/icon_play"
+            app:layout_constraintBottom_toBottomOf="@id/iv_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/iv_background" />
+
+
+        <ImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginLeft="14dp"
+
+            android:scaleType="centerCrop"
+            android:src="@mipmap/icon_avatar"
+            app:layout_constraintBottom_toBottomOf="@id/tv_anthor"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="22dp"
+            android:text="@{video.title}"
+            android:textColor="#ff000000"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/iv_avatar"
+            app:layout_constraintTop_toBottomOf="@id/iv_background"
+            tool:text="标题" />
+
+        <TextView
+            android:id="@+id/tv_anthor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{video.anthor}"
+            android:textColor="#ff444444"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="@id/tv_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            tool:text="作者" />
+
+
+        <ImageView
+            android:id="@+id/iv_duration"
+            android:layout_width="6dp"
+            android:layout_height="6dp"
+            android:layout_marginLeft="20dp"
+            android:src="@mipmap/icon_duration"
+            app:layout_constraintBottom_toBottomOf="@id/tv_anthor"
+            app:layout_constraintStart_toEndOf="@id/tv_anthor"
+            app:layout_constraintTop_toTopOf="@id/tv_anthor" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="@{video.time}"
+            android:textColor="#ff444444"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_anthor"
+            app:layout_constraintStart_toEndOf="@id/iv_duration"
+            app:layout_constraintTop_toTopOf="@id/tv_anthor"
+            tool:text="00:00" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="21dp"
+            android:layout_marginRight="10dp"
+            android:background="#33000000"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_anthor" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
