@@ -20,6 +20,50 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <RadioGroup
+            android:id="@+id/rg_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="84dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@id/iv_notify"
+            android:layout_marginRight="32dp"
+            app:layout_constraintStart_toEndOf="@id/iv_logo"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RadioButton
+                android:id="@+id/rb_recommend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:checked="true"
+                android:drawableLeft="@drawable/icon_video_list_indicator"
+                android:drawablePadding="4dp"
+                android:text="推荐" />
+
+            <RadioButton
+                android:id="@+id/rb_daily"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:button="@null"
+                android:drawableLeft="@drawable/icon_video_list_indicator"
+                android:drawablePadding="4dp"
+                android:text="日报" />
+        </RadioGroup>
+
+
+        <ImageView
+            android:id="@+id/iv_notify"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="5.5dp"
+            android:layout_marginRight="14.5dp"
+            android:src="@mipmap/icon_home_notify"
+            app:layout_constraintBottom_toBottomOf="@+id/rg_indicator"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_pager2"
             android:layout_width="match_parent"
