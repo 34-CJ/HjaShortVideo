@@ -4,9 +4,12 @@ import static com.hja.feature_home.config.HomeConfig.KEY_VIDEO_LIST_TYPE;
 import static com.hja.feature_home.config.HomeConfig.VIDEO_LIST_FRAGMENT_DAILY;
 import static com.hja.feature_home.config.HomeConfig.VIDEO_LIST_FRAGMENT_RECOMMEND;
 
+import android.widget.RadioGroup;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -64,7 +67,39 @@ public class HomeFragment extends BaseFragment<LayoutFragmentHomeBinding, HomeVi
             }
         });
 
+        mDataBinding.viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+
+            /**
+             * ViewPager2滑动完之后
+             * @param position Position index of the new selected page.
+             */
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                switch (position) {
+                    case 0:
+                        mDataBinding.rbRecommend.setChecked(true);
+                        break;
+                    case 1:
+                        mDataBinding.rbDaily.setChecked(true);
+                        break;
+                }
+            }
+        });
+
+        mDataBinding.rgIndicator.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == mDataBinding.rbRecommend.getId()) {
+                    mDataBinding.viewPager2.setCurrentItem(0);
+                } else if (checkedId == mDataBinding.rbDaily.getId()) {
+                    mDataBinding.viewPager2.setCurrentItem(1);
+                }
+            }
+        });
     }
+
+
 
     @Override
     protected void initData() {
