@@ -38,6 +38,9 @@ public abstract class BaseFragment<V extends ViewDataBinding, VM extends ViewMod
             mDataBinding.executePendingBindings();
         }
 
+        initView();
+        initData();
+
         return mDataBinding.getRoot();
     }
 

@@ -17,6 +17,7 @@ public class ARouterPath {
 
         private static final String HOME = "/home";
         public static final String FRAGMENT_HOME = HOME + "/homeFragment";
+        public static final String FRAGMENT_VIDEO_LIST = HOME + "/videoListFragment";
     }
 
     public static class Plaza {
