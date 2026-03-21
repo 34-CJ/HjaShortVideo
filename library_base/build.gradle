@@ -46,6 +46,12 @@ dependencies {
     api libs.liveData
     api libs.viewModel
     api libs.androidAutoSize
+    api libs.glide
+
+
+    api libs.refreshlayout
+    api libs.refreshlayoutRadar
+    api libs.refreshlayoutFooterBall
 
 
     api project(":network")//引用网络库

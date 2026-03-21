@@ -12,6 +12,8 @@ lifecycle = "2.6.1"
 androidAutoSize = "v1.2.1"
 okhttp = "4.12.0"
 retrofit = "2.11.0"
+glide = "4.16.0"
+refreshlayout = "3.0.0-alpha"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -30,6 +32,13 @@ androidAutoSize = { group = "com.github.JessYanCoding", name = "AndroidAutoSize"
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofitConverterGson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+
+
+#smartrefreshLayout
+refreshlayout = { group = "io.github.scwang90", name = "refresh-layout-kernel", version.ref = "refreshlayout" }
+refreshlayoutRadar = { group = "io.github.scwang90", name = "refresh-header-radar", version.ref = "refreshlayout" }
+refreshlayoutFooterBall = { group = "io.github.scwang90", name = "refresh-footer-ball", version.ref = "refreshlayout" }
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
