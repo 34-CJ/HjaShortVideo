@@ -6,18 +6,25 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.hja.feature_home.bean.ResVideo;
 import com.hja.feature_home.databinding.ItemVideoBinding;
+import com.hja.libbase.utils.GlideUtils;
 
 import java.util.List;
 
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> {
 
 
-    private final List<ResVideo> mVideos;
+    private  List<ResVideo> mVideos;
 
-    public VideoAdapter(List<ResVideo> videos) {
+    public VideoAdapter() {
 
-        mVideos = videos;
+//        mVideos = videos;
+    }
+
+    public void setVideos(List<ResVideo> videos) {
+        this.mVideos = videos;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -37,6 +44,8 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
         ResVideo video = mVideos.get(position);
         holder.binding.setVideo(video);
         holder.binding.executePendingBindings();//实时更新数据
+
+
 
     }
 
