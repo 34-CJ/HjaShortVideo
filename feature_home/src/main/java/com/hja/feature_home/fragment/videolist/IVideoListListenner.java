@@ -1,7 +1,7 @@
 package com.hja.feature_home.fragment.videolist;
 
 import com.hja.feature_home.bean.ResVideo;
-import com.hja.libbase.bean.ResList;
+import com.hja.network.bean.ResList;
 
 public interface IVideoListListenner {
 

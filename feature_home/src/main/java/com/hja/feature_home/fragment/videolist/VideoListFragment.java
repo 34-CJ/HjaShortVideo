@@ -16,7 +16,7 @@ import com.hja.feature_home.config.HomeConfig;
 import com.hja.feature_home.databinding.LayoutFragmentVideoListBinding;
 import com.hja.libbase.base.BaseFragment;
 import com.hja.libbase.config.ARouterPath;
-import com.hja.libbase.config.ErrorStatusConfig;
+import com.hja.network.config.ErrorStatusConfig;
 import com.hja.libbase.databinding.LayoutStatusViewBinding;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;

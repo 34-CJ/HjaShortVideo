@@ -4,10 +4,8 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.hja.feature_home.bean.ResVideo;
-import com.hja.feature_home.fragment.videolist.IVideoListListenner;
-import com.hja.feature_home.fragment.videolist.VideoListModel;
-import com.hja.libbase.bean.ResList;
-import com.hja.libbase.config.ErrorStatusConfig;
+import com.hja.network.bean.ResList;
+import com.hja.network.config.ErrorStatusConfig;
 
 import java.util.List;
 

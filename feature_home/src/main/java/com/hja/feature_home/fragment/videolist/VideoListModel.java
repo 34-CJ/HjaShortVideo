@@ -3,18 +3,19 @@ package com.hja.feature_home.fragment.videolist;
 import android.util.Log;
 
 import com.hja.feature_home.api.HomeApiService;
+import com.hja.feature_home.api.HomeApiServiceProvider;
 import com.hja.feature_home.bean.ResVideo;
 import com.hja.feature_home.config.HomeConfig;
-import com.hja.libbase.bean.ResBase;
-import com.hja.libbase.bean.ResList;
-import com.hja.libbase.config.ErrorStatusConfig;
+import com.hja.network.RetrofitProvider;
+import com.hja.network.bean.ResBase;
+import com.hja.network.bean.ResList;
+import com.hja.network.config.ErrorStatusConfig;
 
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class VideoListModel {
 
@@ -28,10 +29,7 @@ public class VideoListModel {
 
     public VideoListModel(IVideoListListenner listenner) {
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://titok.fzqq.fun/")
-                .addConverterFactory(GsonConverterFactory.create())// 配置 Gson 转换器
-                .build();
+        Retrofit retrofit = RetrofitProvider.provide();
 
         mApiService = retrofit.create(HomeApiService.class);
 
@@ -50,11 +48,12 @@ public class VideoListModel {
         } else {
             mPage++;
         }
+        HomeApiService apiService = HomeApiServiceProvider.getApiService();
         Call<ResBase<ResList<ResVideo>>> call;
         if (pageType == HomeConfig.VIDEO_LIST_FRAGMENT_RECOMMEND) {
-            call = mApiService.getRecommend(mPage, mLimit);
+            call = apiService.getRecommend(mPage, mLimit);
         } else {
-            call = mApiService.getDaily(mPage, mLimit);
+            call = apiService.getDaily(mPage, mLimit);
         }
         call.enqueue(new Callback<ResBase<ResList<ResVideo>>>() {
             @Override
