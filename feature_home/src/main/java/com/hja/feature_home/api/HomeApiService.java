@@ -1,8 +1,8 @@
 package com.hja.feature_home.api;
 
 import com.hja.feature_home.bean.ResVideo;
-import com.hja.libbase.bean.ResBase;
-import com.hja.libbase.bean.ResList;
+import com.hja.network.bean.ResBase;
+import com.hja.network.bean.ResList;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
