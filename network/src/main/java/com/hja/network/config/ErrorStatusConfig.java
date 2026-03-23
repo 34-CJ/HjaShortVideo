@@ -1,4 +1,4 @@
-package com.hja.libbase.config;
+package com.hja.network.config;
 
 public class ErrorStatusConfig {
 

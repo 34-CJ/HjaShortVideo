@@ -1,6 +1,4 @@
-package com.hja.libbase.bean;
-
-import java.util.List;
+package com.hja.network.bean;
 
 public class ResBase<T> {
 

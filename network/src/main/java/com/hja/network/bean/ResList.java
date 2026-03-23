@@ -1,4 +1,4 @@
-package com.hja.libbase.bean;
+package com.hja.network.bean;
 
 
 import java.util.List;
