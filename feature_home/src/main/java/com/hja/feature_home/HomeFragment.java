@@ -103,6 +103,13 @@ public class HomeFragment extends BaseFragment<LayoutFragmentHomeBinding, HomeVi
 
     @Override
     protected void initData() {
-
+////一个测试方法，主要用来测试错误状态码
+//        mDataBinding.btnTest.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String string = mDataBinding.etTest.getText().toString();
+//                mRecommendFragment.setErrorCode(Integer.valueOf(string));
+//            }
+//        });
     }
 }
