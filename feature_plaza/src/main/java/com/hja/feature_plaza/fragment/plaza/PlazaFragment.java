@@ -1,8 +1,9 @@
-package com.hja.feature_plaza;
+package com.hja.feature_plaza.fragment.plaza;
 
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 
+import com.hja.feature_plaza.R;
 import com.hja.libbase.base.BaseFragment;
 import com.hja.libbase.base.BaseViewModel;
 import com.hja.libbase.config.ARouterPath;
