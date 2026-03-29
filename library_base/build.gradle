@@ -57,6 +57,7 @@ dependencies {
     api project(":network")//引用网络库
 
     annotationProcessor libs.arouterCompiler
+
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
