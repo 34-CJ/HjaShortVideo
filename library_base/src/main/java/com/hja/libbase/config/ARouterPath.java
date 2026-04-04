@@ -38,6 +38,7 @@ public class ARouterPath {
         public static final String FRAGMENT_USER = USER + "/userFragment";
 
         public static final String ACTIVITY_LOGIN = USER + "/loginActivity";
+        public static final String ACTIVITY_AGREEMENT = USER + "/AgreementActivity";
     }
 
 

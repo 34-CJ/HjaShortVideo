@@ -9,5 +9,5 @@ public interface IRequestCallback<T> {
 
     void onLoadFinish(T datas);
 
-    void onLoadFailure(int errorCode);
+    void onLoadFailure(int errorCode, String message);
 }

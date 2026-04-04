@@ -4,13 +4,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModel;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.hja.libbase.R;
@@ -22,6 +24,7 @@ public abstract class BaseFragment<V extends ViewDataBinding, VM extends BaseVie
     protected VM mViewModel;
     protected V mDataBinding;
     protected LayoutStatusViewBinding mLayoutStatusViewBinding;
+    private ProgressBar mProgressBar;
 
     @Nullable
     @Override
@@ -43,15 +46,49 @@ public abstract class BaseFragment<V extends ViewDataBinding, VM extends BaseVie
             //关联完mViewModel后，实时更新数据
             mDataBinding.executePendingBindings();
         }
-
+        //初始化arouter
         ARouter.getInstance().inject(this);
+
+
         initView();
         initData();
         initStatusView();
-
+        initToast();
+        initProgressBar();
         return mDataBinding.getRoot();
     }
 
+    /**
+     * 初始化加载样式
+     */
+    private void initProgressBar() {
+        mProgressBar = new ProgressBar(getContext());
+        ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        layoutParams.startToStart = ConstraintLayout.LayoutParams.PARENT_ID;
+        layoutParams.topToTop = ConstraintLayout.LayoutParams.PARENT_ID;
+        layoutParams.endToEnd = ConstraintLayout.LayoutParams.PARENT_ID;
+        layoutParams.bottomToBottom = ConstraintLayout.LayoutParams.PARENT_ID;
+        mProgressBar.setLayoutParams(layoutParams);
+        mProgressBar.setVisibility(View.GONE);//默认不可见
+        ConstraintLayout constraintLayout = (ConstraintLayout) mDataBinding.getRoot();
+        constraintLayout.addView(mProgressBar);
+    }
+    private void initToast() {
+        if (mViewModel!=null){
+            mViewModel.getToastText().observe(getViewLifecycleOwner(), text -> {
+                Toast.makeText(getContext(), text, Toast.LENGTH_SHORT).show();
+            });
+
+            //控制加载样式是否显示
+            mViewModel.getShowLoading().observe(getViewLifecycleOwner(), show -> {
+                mProgressBar.setVisibility(show ? View.VISIBLE : View.GONE);
+            });
+        }
+    }
+
+    /**
+     * 初始化状态错误页面，使用的时候只需要设置mViewModel里的errorcode值即可
+     */
     private void initStatusView() {
         //获取当前页面的根布局
         ViewGroup root = (ViewGroup) mDataBinding.getRoot();
@@ -97,7 +134,6 @@ public abstract class BaseFragment<V extends ViewDataBinding, VM extends BaseVie
         }
 
     }
-
 
 
     protected abstract VM getViewModel();

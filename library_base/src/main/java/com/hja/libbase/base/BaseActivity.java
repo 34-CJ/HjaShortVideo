@@ -1,24 +1,25 @@
 package com.hja.libbase.base;
 
-
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
-import androidx.lifecycle.ViewModel;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.hja.libbase.utils.StatusBarUtils;
 
-public abstract class BaseActivity<V extends ViewDataBinding, VM extends ViewModel> extends AppCompatActivity {
+public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseViewModel> extends AppCompatActivity {
 
     protected VM mViewModel;
     protected V mDataBinding;
+    private ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,19 +27,40 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends ViewMod
 
         initViewModel();
         initDatabinding();
-        //开启沉浸式状态栏
-        EdgeToEdge.enable(this);
-        //mDataBinding.getRoot()获取根布局
-        ViewCompat.setOnApplyWindowInsetsListener(mDataBinding.getRoot(), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
+//        //开启沉浸式状态栏
+//        EdgeToEdge.enable(this);
+//        //mDataBinding.getRoot()获取根布局
+//        ViewCompat.setOnApplyWindowInsetsListener(mDataBinding.getRoot(), (v, insets) -> {
+//            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+//            return insets;
+//        });
+
+        //开启沉浸式效果
+        StatusBarUtils.setImmerseStatusBar(this);
 
         ARouter.getInstance().inject(this);
 
         initView();
         initData();
+        initProgressBar();
+    }
+
+    /**
+     * 初始化加载样式
+     */
+    private void initProgressBar() {
+        mProgressBar = new ProgressBar(this);
+        ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        layoutParams.startToStart = ConstraintLayout.LayoutParams.PARENT_ID;
+        layoutParams.topToTop = ConstraintLayout.LayoutParams.PARENT_ID;
+        layoutParams.endToEnd = ConstraintLayout.LayoutParams.PARENT_ID;
+        layoutParams.bottomToBottom = ConstraintLayout.LayoutParams.PARENT_ID;
+        mProgressBar.setLayoutParams(layoutParams);
+        mProgressBar.setVisibility(View.GONE);//默认不可见
+        ConstraintLayout constraintLayout = (ConstraintLayout) mDataBinding.getRoot();
+        constraintLayout.addView(mProgressBar);
     }
 
     private void initDatabinding() {
@@ -55,6 +77,18 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends ViewMod
     private void initViewModel() {
         //从子类获取到的viewModel 赋值给mViewModel
         mViewModel = getViewModel();
+
+        if (mViewModel != null) {
+            //控制是否显示弹窗信息
+            mViewModel.getToastText().observe(this, text -> {
+                Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+            });
+            //控制加载样式是否显示
+            mViewModel.getShowLoading().observe(this, show -> {
+                mProgressBar.setVisibility(show ? View.VISIBLE : View.GONE);
+            });
+        }
+
     }
 
 

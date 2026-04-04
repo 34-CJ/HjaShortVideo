@@ -46,4 +46,15 @@ public class ResBase<T> {
         this.data = data;
     }
 
+
+    @Override
+    public String toString() {
+        return "ResBase{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", time='" + time + '\'' +
+                ", data=" + data +
+                '}';
+    }
+
 }
