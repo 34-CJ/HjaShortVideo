@@ -35,7 +35,7 @@ public class ResPlaza {
         private String url;
         private String fullurl;
         /**
-         * title : 和老孙一起去看青山流水
+         * title : 和老韩一起去看青山流水
          * images : ["https://pic.rmb.bdstatic.com/bjh/240305/654445218841bf7a9cbd6b80a856cf1d2196.jpeg","http://ali-img.kaiyanapp.com/302209431/9c40f4d0392212e3cecb34b9e84aa595.png?image_process=image/auto-orient,1/resize,w_480/format,webp/interlace,1/quality,q_80","http://ali-img.kaiyanapp.com/302209431/9c40f4d0392212e3cecb34b9e84aa595.png?image_process=image/auto-orient,1/resize,w_480/format,webp/interlace,1/quality,q_80","http://ali-img.kaiyanapp.com/304398712/0-6c1f1e2417b947f8fed0e5b69e5cff52.jpeg?image_process=image/auto-orient,1/resize,w_480/format,webp/interlace,1/quality,q_80"]
          * author : 李白
          * avatar : https://titok.fzqq.fun/uploads/20240826/50d42d478612bb3f289dd6258caa046b.jpeg

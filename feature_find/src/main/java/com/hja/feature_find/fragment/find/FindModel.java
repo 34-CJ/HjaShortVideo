@@ -32,7 +32,7 @@ public class FindModel {
 
             @Override
             public void onError(int errorCode, String meesage) {
-                callback.onLoadFailure(errorCode);
+                callback.onLoadFailure(errorCode,meesage);
             }
         });
 

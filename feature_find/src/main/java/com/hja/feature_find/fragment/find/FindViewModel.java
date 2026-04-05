@@ -45,7 +45,7 @@ public class FindViewModel extends BaseViewModel implements IRequestCallback<Res
     }
 
     @Override
-    public void onLoadFailure(int errorCode) {
+    public void onLoadFailure(int errorCode, String message) {
         Log.i(TAG, "onLoadFailure: errorCode = " + errorCode);
     }
 
