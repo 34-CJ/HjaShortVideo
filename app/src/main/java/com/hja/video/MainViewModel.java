@@ -2,5 +2,7 @@ package com.hja.video;
 
 import androidx.lifecycle.ViewModel;
 
-public class MainViewModel extends ViewModel {
+import com.hja.libbase.base.BaseViewModel;
+
+public class MainViewModel extends BaseViewModel {
 }

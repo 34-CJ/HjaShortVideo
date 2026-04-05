@@ -6,11 +6,16 @@ import android.widget.RadioGroup;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.hja.libbase.base.BaseActivity;
 // 这两行是自动生成的，环境修好后它们会自动变黑
+import com.hja.libbase.config.ARouterPath;
 import com.hja.video.databinding.ActivityMainBinding;
-import com.hja.video.BR;
+
+import java.util.ArrayList;
+
+@Route(path = ARouterPath.Main.ACTIVITY_MAIN)
 
 public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewModel> {
 
@@ -24,7 +29,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         return R.layout.activity_main;
     }
 
-    @Override 
+    @Override
     protected int getBindingVariableId() {
         // 这里的 BR 如果还报错，说明编译还没彻底完成
         return BR.viewModel;
