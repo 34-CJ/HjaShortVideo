@@ -8,15 +8,6 @@ android {
         if (rootProject.ext.isModule){
             applicationId "com.hja.feature_home"
         }
-        javaCompileOptions {
-            annotationProcessorOptions {
-                // 注意：这里必须配置，ARouter 才能识别模块
-                arguments = [AROUTER_MODULE_NAME: project.getName()]
-            }
-        }
-    }
-    buildFeatures {
-        dataBinding true
     }
 
 }
@@ -31,7 +22,7 @@ dependencies {
     androidTestImplementation libs.espresso.core
 
     annotationProcessor libs.arouterCompiler
-    implementation project(":network")
+
     implementation project(":library_base")
-    annotationProcessor 'com.alibaba:arouter-compiler:1.5.2'
+
 }

@@ -14,8 +14,12 @@ okhttp = "4.12.0"
 retrofit = "2.11.0"
 glide = "4.16.0"
 refreshlayout = "3.0.0-alpha"
+security = "1.0.0"
+eventBus = "3.3.1"
+flycoTabLayout = "3.0.0"
 
 [libraries]
+#一些android官方库
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -25,7 +29,9 @@ activity = { group = "androidx.activity", name = "activity", version.ref = "acti
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 liveData = { group = "androidx.lifecycle", name = "lifecycle-livedata", version.ref = "lifecycle" }
 viewModel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "lifecycle" }
+security = { group = "androidx.security", name = "security-crypto", version.ref = "security" }
 
+#一些第三方库
 arouter = {group = "com.alibaba", name = "arouter-api", version.ref = "arouter"}
 arouterCompiler = { group = "com.alibaba", name = "arouter-compiler", version.ref = "arouter"}
 androidAutoSize = { group = "com.github.JessYanCoding", name = "AndroidAutoSize", version.ref = "androidAutoSize" }
@@ -33,13 +39,15 @@ okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhtt
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofitConverterGson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
-
+eventBus = { group = "org.greenrobot", name = "eventbus", version.ref = "eventBus" }
+flycoTabLayout = { group = "io.github.h07000223", name = "flycoTabLayout", version.ref = "flycoTabLayout" }
 
 #smartrefreshLayout
 refreshlayout = { group = "io.github.scwang90", name = "refresh-layout-kernel", version.ref = "refreshlayout" }
 refreshlayoutRadar = { group = "io.github.scwang90", name = "refresh-header-radar", version.ref = "refreshlayout" }
 refreshlayoutFooterBall = { group = "io.github.scwang90", name = "refresh-footer-ball", version.ref = "refreshlayout" }
+
 [plugins]
-android-application = { id = "com.android.application", version.ref = "agp" }
-android-library = { id = "com.android.library", version.ref = "agp" }
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
 

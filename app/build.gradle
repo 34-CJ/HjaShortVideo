@@ -1,12 +1,10 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.androidApplication)
 }
 
 android {
     namespace 'com.hja.video'
-    compileSdk {
-        version = release(rootProject.ext.compileSdkVersion)
-    }
+    compileSdk rootProject.ext.compileSdkVersion
 
     defaultConfig {
         applicationId "com.hja.video"
@@ -16,6 +14,7 @@ android {
         versionName rootProject.ext.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
@@ -30,24 +29,25 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    buildFeatures {
-        dataBinding true
+    dataBinding {
+        enable true
     }
 }
 
 dependencies {
+
 //    implementation libs.appcompat
 //    implementation libs.material
-
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
 
     annotationProcessor libs.arouterCompiler
+
     if (rootProject.ext.isModule){
         implementation project(":library_base")
     }else{
@@ -58,6 +58,7 @@ dependencies {
         implementation project(":feature_find")
         implementation project(":feature_user")
     }
+
 
 
 }

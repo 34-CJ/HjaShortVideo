@@ -1,12 +1,10 @@
 plugins {
-    alias(libs.plugins.android.library)
+    alias(libs.plugins.androidLibrary)
 }
 
 android {
     namespace 'com.hja.libbase'
-    compileSdk {
-        version = release(rootProject.ext.compileSdkVersion)
-    }
+    compileSdk rootProject.ext.compileSdkVersion
 
     defaultConfig {
         minSdk rootProject.ext.minSdkVersion
@@ -28,16 +26,17 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
-    }
-    buildFeatures {
-        dataBinding true
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    dataBinding {
+        enable true
+    }
 }
 
 dependencies {
+
     api libs.appcompat
     api libs.material
     api libs.activity
@@ -46,13 +45,14 @@ dependencies {
     api libs.liveData
     api libs.viewModel
     api libs.androidAutoSize
+    api libs.flycoTabLayout
     api libs.glide
-
+    api libs.security
+    api libs.eventBus
 
     api libs.refreshlayout
     api libs.refreshlayoutRadar
     api libs.refreshlayoutFooterBall
-
 
     api project(":network")//引用网络库
 
