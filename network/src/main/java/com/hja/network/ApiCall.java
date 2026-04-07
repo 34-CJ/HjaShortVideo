@@ -9,6 +9,10 @@ import com.hja.network.config.ErrorStatusConfig;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+/**
+ * 对网络请求做一个封装
+ */
 public class ApiCall {
 
     private static final String TAG = "ApiCall";
@@ -41,7 +45,7 @@ public class ApiCall {
      * @param callback
      * @param <T>
      */
-    public static <T> void enqueue(Call<ResBase<T>> call, ApiCallback callback) {
+    public static <T> void enqueue(Call<ResBase<T>> call, ApiCallback<ResBase<T>> callback) {
 
         call.enqueue(new Callback<ResBase<T>>() {
             @Override
@@ -49,7 +53,7 @@ public class ApiCall {
 
                 if (response.isSuccessful()) {
 
-                    if (response.code() == 1 && response.body() != null) {
+                    if (response.body().getCode() == 1 && response.body() != null) {
                         Log.i(TAG, "onResponse: 数据请求成功");
                         //请求成功 并且拿到数据
                         callback.onSuccess(response.body());
