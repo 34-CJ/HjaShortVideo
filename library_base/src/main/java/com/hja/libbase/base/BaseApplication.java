@@ -1,6 +1,7 @@
 package com.hja.libbase.base;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.alibaba.android.arouter.BuildConfig;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -12,9 +13,13 @@ import me.jessyan.autosize.AutoSizeConfig;
  */
 public class BaseApplication extends Application {
 
+    private static Application instance;
+
     @Override
     public void onCreate() {
         super.onCreate();
+
+        instance = this;
 
         //在调试模式下
         if (BuildConfig.DEBUG) {
@@ -24,7 +29,20 @@ public class BaseApplication extends Application {
 
         //初始化ARouter
         ARouter.init(this);
+
         //AndroidAutoSize的参数初始化
         AutoSizeConfig.getInstance().setCustomFragment(true);
+    }
+
+    /**
+     * 使用Application生成了一个全局可用的context
+     * 注意不要滥用，否则会产生下面的问题
+     * 1、把Application当成是某个Activity上下文，与ui更新关联在一起，会引发错误
+     * 2、更容易获取到context，会增加项目耦合性
+     *
+     * @return
+     */
+    public static Context getContext() {
+        return instance.getApplicationContext();
     }
 }
