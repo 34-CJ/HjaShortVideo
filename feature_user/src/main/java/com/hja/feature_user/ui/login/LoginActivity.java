@@ -47,6 +47,12 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewM
         mDataBinding.ivQualifications.setOnClickListener(v -> {
             ARouter.getInstance().build(ARouterPath.User.ACTIVITY_AGREEMENT).navigation();
         });
+
+        mViewModel.getLoginSuccess().observe(this, isLoginSuceess -> {
+            if (isLoginSuceess) {
+                finish();//登录成功后 关闭当前页面
+            }
+        });
     }
 
     private void initAgreementText() {
@@ -113,5 +119,6 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewM
     protected int getBindingVariableId() {
         return BR.viewModel;
     }
+
 
 }

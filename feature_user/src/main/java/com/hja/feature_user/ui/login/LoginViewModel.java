@@ -3,15 +3,14 @@ package com.hja.feature_user.ui.login;
 import android.os.CountDownTimer;
 import android.util.Log;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.hja.feature_user.bean.ResLogin;
 import com.hja.libbase.base.BaseViewModel;
 import com.hja.libbase.base.IRequestCallback;
+import com.hja.libbase.bean.ResUser;
+import com.hja.libbase.eventbus.MessageEvent;
 import com.hja.network.bean.ResBase;
-
 
 public class LoginViewModel extends BaseViewModel {
 
@@ -21,6 +20,7 @@ public class LoginViewModel extends BaseViewModel {
     private MutableLiveData<String> mCode = new MutableLiveData<>();//用户输入的验证码
     private MutableLiveData<Boolean> mIsEnableLogin = new MutableLiveData<>(false);//登录按钮是否可用。默认不可用
     private MutableLiveData<Boolean> mCheckAgreement = new MutableLiveData<>(false);//登是否勾选协议
+    private MutableLiveData<Boolean> mLoginSuccess = new MutableLiveData<>(false);//是否登录成功
 
     private MutableLiveData<String> mGetVerticalCodeText = new MutableLiveData<>("获取验证码");//获取验证码控件的显示文本
     private MutableLiveData<Boolean> mIsEnableSendCode = new MutableLiveData<>(true);//获取验证码控件是否可用
@@ -127,6 +127,9 @@ public class LoginViewModel extends BaseViewModel {
                 Log.i(TAG, "onLoadFinish token：" + datas.getData());
                 showLoading(false);
                 showToast(datas.getMsg());
+
+                int id = datas.getData().getId();
+                getUserInfo(id);
             }
 
             @Override
@@ -135,6 +138,30 @@ public class LoginViewModel extends BaseViewModel {
                 showLoading(false);
             }
         });
+    }
+
+    private void getUserInfo(int id) {
+        showLoading(true);
+        mModel.getUserInfo(String.valueOf(id), new IRequestCallback<ResBase<ResUser>>() {
+            @Override
+            public void onLoadFinish(ResBase<ResUser> datas) {
+                showLoading(false);
+                mLoginSuccess.setValue(true);
+                //发送一个已登录的状态
+                MessageEvent.LoginStatusEvent.post(true);
+            }
+
+            @Override
+            public void onLoadFailure(int errorCode, String message) {
+                showLoading(false);
+                showToast(message);
+            }
+        });
+
+    }
+
+    public MutableLiveData<Boolean> getLoginSuccess() {
+        return mLoginSuccess;
     }
 
     public MutableLiveData<Boolean> getIsEnableLogin() {
