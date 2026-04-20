@@ -39,6 +39,20 @@ public class ARouterPath {
 
         public static final String ACTIVITY_LOGIN = USER + "/loginActivity";
         public static final String ACTIVITY_AGREEMENT = USER + "/AgreementActivity";
+
+        //设置页
+        public static final String ACTIVITY_SETTINGS = USER + "/SettingsActivity";
+        //修改密码
+        public static final String ACTIVITY_RESETPWD = USER + "/ResetPasswordActivity";
+        //推送设置
+        public static final String ACTIVITY_PUSHSETTINGS = USER + "/PushSettingsActivity";
+        //播放设置
+        public static final String ACTIVITY_PLAYTTINGS = USER + "/PlaySettingsActivity";
+        //账户与绑定
+        public static final String ACTIVITY_ACCOUNT = USER + "/AccountActivity";
+        public static final String ACTIVITY_PERMISSION = USER + "/PermissionActivity";
+        public static final String ACTIVITY_EDITUSERINFO = USER + "/EditUserInfoActivity";
+        public static final String ACTIVITY_ABOUTME = USER + "/AboutMeActivity";
     }
 
 

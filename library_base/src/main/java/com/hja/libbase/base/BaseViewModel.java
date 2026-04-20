@@ -14,6 +14,20 @@ public class BaseViewModel extends ViewModel {
     //是否显示加载样式
     private MutableLiveData<Boolean> mShowLoading = new MutableLiveData<>();
 
+    //是否需要关闭当前页面
+    private MutableLiveData<Boolean> mFinish = new MutableLiveData<>();
+
+
+    public MutableLiveData<Boolean> getFinish() {
+        return mFinish;
+    }
+
+    /**
+     * 关闭页面
+     */
+    public void onFinishPage() {
+        mFinish.setValue(true);
+    }
 
     /**
      * 显示吐司弹窗
@@ -47,4 +61,6 @@ public class BaseViewModel extends ViewModel {
     public MutableLiveData<Boolean> getShowLoading() {
         return mShowLoading;
     }
+
+
 }
