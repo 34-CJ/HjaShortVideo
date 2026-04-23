@@ -50,6 +50,13 @@ public class UserFragment extends BaseFragment<LayoutFragmentUserBinding, UserVi
             }
         });
 
+        mDataBinding.ivSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build(ARouterPath.User.ACTIVITY_SETTINGS).navigation();
+            }
+        });
+
     }
 
     @Override
