@@ -4,10 +4,12 @@ import static com.hja.feature_home.config.HomeConfig.KEY_VIDEO_LIST_TYPE;
 import static com.hja.feature_home.config.HomeConfig.VIDEO_LIST_FRAGMENT_DAILY;
 import static com.hja.feature_home.config.HomeConfig.VIDEO_LIST_FRAGMENT_RECOMMEND;
 
+import android.util.Log;
 import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -17,16 +19,20 @@ import com.hja.feature_home.databinding.LayoutFragmentHomeBinding;
 import com.hja.feature_home.fragment.videolist.VideoListFragment;
 import com.hja.libbase.base.BaseFragment;
 import com.hja.libbase.config.ARouterPath;
+import com.hja.libbase.utils.StatusBarUtils;
 
 import java.util.ArrayList;
 
 @Route(path = ARouterPath.Home.FRAGMENT_HOME)
 public class HomeFragment extends BaseFragment<LayoutFragmentHomeBinding, HomeViewModel> {
 
+    private static final String TAG = "HomeFragment";
+
+    private VideoListFragment mRecommendFragment;
 
     @Override
     protected HomeViewModel getViewModel() {
-        return null;
+        return new ViewModelProvider(this).get(HomeViewModel.class);
     }
 
     @Override
@@ -41,7 +47,10 @@ public class HomeFragment extends BaseFragment<LayoutFragmentHomeBinding, HomeVi
 
     @Override
     protected void initView() {
-        VideoListFragment recommendFragment = (VideoListFragment) ARouter.getInstance()
+        StatusBarUtils.addStatusBarHeight2RootView(mDataBinding.getRoot());
+
+        Log.i(TAG, "initView");
+        mRecommendFragment = (VideoListFragment) ARouter.getInstance()
                 .build(ARouterPath.Home.FRAGMENT_VIDEO_LIST)
                 .withInt(KEY_VIDEO_LIST_TYPE, VIDEO_LIST_FRAGMENT_RECOMMEND)
                 .navigation();
@@ -51,7 +60,7 @@ public class HomeFragment extends BaseFragment<LayoutFragmentHomeBinding, HomeVi
                 .navigation();
 
         ArrayList<Fragment> fragments = new ArrayList<>();
-        fragments.add(recommendFragment);
+        fragments.add(mRecommendFragment);
         fragments.add(dailyFragment);
 
         mDataBinding.viewPager2.setAdapter(new FragmentStateAdapter(getActivity()) {
@@ -99,10 +108,9 @@ public class HomeFragment extends BaseFragment<LayoutFragmentHomeBinding, HomeVi
         });
     }
 
-
-
     @Override
     protected void initData() {
+
 ////一个测试方法，主要用来测试错误状态码
 //        mDataBinding.btnTest.setOnClickListener(new View.OnClickListener() {
 //            @Override

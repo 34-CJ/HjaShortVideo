@@ -18,19 +18,20 @@
 
         <ImageView
             android:id="@+id/iv_background"
+            imageUrl="@{video.image}"
             android:layout_width="match_parent"
             android:layout_height="216dp"
             android:scaleType="centerCrop"
-            tool:src="@mipmap/bg_video_test"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tool:src="@mipmap/bg_video_test" />
 
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginLeft="14dp"
             android:layout_marginTop="16dp"
-            tool:src="@mipmap/icon_mute"
+            android:src="@mipmap/icon_mute"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,7 +39,7 @@
         <ImageView
             android:layout_width="19.5dp"
             android:layout_height="19.5dp"
-            tool:src="@mipmap/icon_play"
+            android:src="@mipmap/icon_play"
             app:layout_constraintBottom_toBottomOf="@id/iv_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -47,14 +48,12 @@
 
         <ImageView
             android:id="@+id/iv_avatar"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginLeft="14dp"
-
-            android:scaleType="centerCrop"
-            tool:src="@mipmap/icon_avatar"
+            style="@style/user_avatar_20dp"
+            imageCircleUrl="@{video.avatar}"
+            android:layout_marginLeft="@dimen/margin_start_14dp"
             app:layout_constraintBottom_toBottomOf="@id/tv_anthor"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tool:src="@mipmap/icon_avatar" />
 
 
         <TextView
@@ -64,7 +63,7 @@
             android:layout_marginLeft="12dp"
             android:layout_marginTop="22dp"
             android:text="@{video.title}"
-            android:textColor="#ff000000"
+            android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@id/iv_avatar"
             app:layout_constraintTop_toBottomOf="@id/iv_background"
@@ -72,14 +71,17 @@
 
         <TextView
             android:id="@+id/tv_anthor"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:text="@{video.description}"
-            android:textColor="#ff444444"
-            android:textSize="11sp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_size_11sp"
+            app:layout_constraintEnd_toStartOf="@id/iv_duration"
             app:layout_constraintStart_toStartOf="@id/tv_title"
             app:layout_constraintTop_toBottomOf="@id/tv_title"
-            tool:text="作者" />
+            tool:text="描述" />
 
 
         <ImageView
@@ -87,21 +89,23 @@
             android:layout_width="6dp"
             android:layout_height="6dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginRight="4dp"
             android:src="@mipmap/icon_duration"
-            app:layout_constraintBottom_toBottomOf="@id/tv_anthor"
-            app:layout_constraintStart_toEndOf="@id/tv_anthor"
-            app:layout_constraintTop_toTopOf="@id/tv_anthor" />
+            app:layout_constraintBottom_toBottomOf="@id/tv_duration"
+            app:layout_constraintEnd_toStartOf="@id/tv_duration"
+            app:layout_constraintTop_toTopOf="@id/tv_duration" />
 
 
         <TextView
+            android:id="@+id/tv_duration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
+
+            android:layout_marginRight="14dp"
             android:text="@{video.duration}"
             android:textColor="#ff444444"
-            android:textSize="11sp"
-            app:layout_constraintBottom_toBottomOf="@id/tv_anthor"
-            app:layout_constraintStart_toEndOf="@id/iv_duration"
+            android:textSize="@dimen/font_size_11sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_anthor"
             tool:text="00:00" />
 

@@ -1,23 +1,23 @@
-package com.hja.feature_home.fragment.videolist;
-
-import com.hja.feature_home.bean.ResVideo;
-import com.hja.network.bean.ResList;
-
-public interface IVideoListListenner {
-
-    /**
-     * 网络请求成功
-     *
-     * @param isFirst 是否是第一次加载
-     * @param videos
-     */
-    void onLoadFinish(boolean isFirst, ResList<ResVideo> videos);
-
-    /**
-     * 网络请求失败
-     *
-     * @param statusCode 错误码
-     * @param message    错误消息
-     */
-    void onLoadFial(int statusCode, String message);
-}
+//package com.hja.feature_home.fragment.videolist;
+//
+//import com.hja.feature_home.bean.ResVideo;
+//import com.hja.network.bean.ResList;
+//
+//public interface IVideoListListenner {
+//
+//    /**
+//     * 网络请求成功
+//     *
+//     * @param isFirst 是否是第一次加载
+//     * @param videos
+//     */
+//    void onLoadFinish(boolean isFirst, ResList<ResVideo> videos);
+//
+//    /**
+//     * 网络请求失败
+//     *
+//     * @param statusCode 错误码
+//     * @param message    错误消息
+//     */
+//    void onLoadFial(int statusCode, String message);
+//}
